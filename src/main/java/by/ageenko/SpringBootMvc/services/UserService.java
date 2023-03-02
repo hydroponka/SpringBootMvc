@@ -25,7 +25,7 @@ public class UserService {
         return user.orElse(null);
     }
     @Transactional(readOnly = true)
-    public boolean authorization(String name, String password){
+    public boolean authorization(String name, String password){  //Security!
         Optional<User> user = userRepository.findUserByName(name);
         return user.map(value -> value.getPassword().equals(password)).orElse(false);
     }
